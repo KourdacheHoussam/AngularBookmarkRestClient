@@ -28,6 +28,7 @@ angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl', [
             )
             .error(
                 function(error){
+                     console.log("unable to load:(");
                     $scope.status="Unable to load bookmarks : Error : "+error;
                 }
             )

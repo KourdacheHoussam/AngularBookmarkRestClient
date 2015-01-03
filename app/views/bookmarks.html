@@ -1,2 +1,25 @@
-<p>This is the bookmarks view.</p>
- {{model.msg}}
+<div class="jumbotron">
+<h2>List of bookmarks</h2>
+<!-- Dispaly the content of $scope.bookmarks : list of bookmarks-->
+<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	
+    <thead style="color:#3498DB; background-color:#34495E;">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Edit</th>
+        </tr>        
+    </thead>
+    <tbody data-ng-repeat="bookmark in bookmarks">
+    	<tr>
+            <th>{{bookmark.id}}</th>
+            <th>{{bookmark.name}}</th>
+            <th>{{bookmark.type}}</th>
+            <th>{{bookmark.description}}</th>
+            <th><button ng:click="bookmarks.$remove(bookmark)">Delete</button></th>
+        </tr>            	
+    </tbody>
+</table>
+</div>
