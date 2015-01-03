@@ -11,6 +11,7 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
 
         var url_base="http://localhost:9191/RestBookmarkManager/rest";
         var url_all_bookmarks="/bookmarks/getAll";
+        var url_bookmark_by_id="/bookmarks/get/";
         var url_all_tags="";
         var url_all_favoriteBookmarks="";
         //Store data
@@ -22,6 +23,10 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
         dataFactory.getBookmarks=function(){
             console.log("I'am in the factory");
             return $http.get(url_base+url_all_bookmarks);
+        };
+
+        dataFactory.getBookmarkByID=function(id){
+            return $http.get(url_base+url_bookmark_by_id+id);
         };
 
         dataFactory.getTags=function(){

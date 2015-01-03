@@ -34,9 +34,21 @@ angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl', [
             )
     };
 
-    $scope.model={
-        id:"1",
-        msg:"hello wolrd"
+
+    //find bookmark by id
+    function findBookmarkById(){
+        console.log("The id entered: " + this.idbookmark);
+        if(this.idbookmark==""){
+            return false;
+        }
+
+        RestFactory.getBookmarkByID(this.idbookmark).
+            success(function(bookmark){
+                $scope.foundBookmark=bookmark;
+            })  
+            .error(function(error){
+                $scope.status="Unable to load bookmarks : Error : "+error;
+            })        
     };
   }]
 );
