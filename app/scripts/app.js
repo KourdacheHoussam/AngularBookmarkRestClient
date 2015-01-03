@@ -17,16 +17,22 @@ var app=angular.module('angularBookmarkRestClientApp', [
     'ngTouch'
   ]);
 
-
 app.config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+    $routeProvider.when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })      
+      .when('/bookmarks', {
+        templateUrl:'views/bookmarks.html',
+        controller: 'BookmarksrestCtrl'
+      })
+      .when('/tags', {
+        templateUrl:'views/tags.html',
+        controller:'TagsrestcontrollerCtrl'
       })
       .otherwise({
         redirectTo: '/'

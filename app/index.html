@@ -28,21 +28,31 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">Bookmark Rest Client</h3>
+    <!--** HEADER **  Add your site or application content here -->
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container container-fluid">
+        <header>        
+          <h3 class="text-muted pull-left">Angular : Bookmark Rest Client</h3>
+          <ul class="nav nav-pills pull-right">
+            <li ><a ng-href="#">Home</a></li>
+            <li ><a ng-href="#/bookmarks">Book Marks</a></li>
+            <li ><a ng-href="#/favorites">Favorite Bookmarks</a></li>
+            <li ><a ng-href="#/tags">Tags</a></li>
+            <li><a ng-href="#/about">About</a></li>
+          </ul> 
+        </header>
       </div>
-
-      <div ng-view=""></div>
-
-     
     </div>
+  
+    <!-- ************************ Container ************************** -->
+    <div class="container marketing">
+
+        <ng-view>
+        </ng-view>
+       
+    </div>
+
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -67,6 +77,9 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/bookmarksRestController.js"></script>
+        <script src="scripts/services/restfactory.js"></script>
+        <script src="scripts/controllers/tagsrestcontroller.js"></script>
         <!-- endbuild -->
 </body>
 </html>
