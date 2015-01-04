@@ -1,11 +1,35 @@
-
 <div class="jumbotron">
-<p>This is the tags view.</p>
 
-{{awesomeThings}}
-
-
-{{model.id}}
-
+    <!-- Dispaly the content of $scope.bookmarks : list of bookmarks-->
+    <div class="row" > 
+        <div class="col-md-6">           
+            <div class="well">
+                 <h2>List of Tags</h2>
+                <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">    
+                    <thead style="color:white; background-color:#34495E;">
+                        <tr>
+                            <th>Id</th>
+                            <th>Value</th>
+                            <th>Edit</th>
+                        </tr>        
+                    </thead>
+                    <tbody data-ng-repeat="tag in tags">
+                        <tr>
+                            <th>{{tag.id}}</th>
+                            <th>{{tag.tag_value}}</th>          
+                            <th><button ng:click="tags.$remove(tag)">Delete</button></th>
+                        </tr>               
+                    </tbody>
+                </table>
+            </div>
+       </div>
+       <div class="col-md-6">
+            <div class="well">
+                 <h2>Add a Tag</h2>
+                <input type="text" name="tag_value" size="30" placeholder="Enter Tag value" ng:required />
+                <button ng:click="addTag()">Add Tag</button>
+            </div>
+       </div>
+    </div>
 
 </div>

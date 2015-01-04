@@ -12,7 +12,10 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
         var url_base="http://localhost:9191/RestBookmarkManager/rest";
         var url_all_bookmarks="/bookmarks/getAll";
         var url_bookmark_by_id="/bookmarks/get/";
-        var url_all_tags="";
+        var url_all_tags="/tags/getAll";
+        var url_tag_by_id="/tags/get/";
+        var url_delete_tag="/tags/delete/";
+        var url_delete_all_tags="tags/delete/all";
         var url_all_favoriteBookmarks="";
         //Store data
         var dataFactory={};
@@ -21,7 +24,6 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
          * @returns {HttpPromise}
          */
         dataFactory.getBookmarks=function(){
-            console.log("I'am in the factory");
             return $http.get(url_base+url_all_bookmarks);
         };
 
@@ -29,8 +31,9 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
             return $http.get(url_base+url_bookmark_by_id+id);
         };
 
-        dataFactory.getTags=function(){
-
+        dataFactory.getTags=function(){          
+            console.log("I'am in the factory");
+            return $http.get(url_base+url_all_tags);
         };
 
         dataFactory.getFavoriteBookmarks=function(){

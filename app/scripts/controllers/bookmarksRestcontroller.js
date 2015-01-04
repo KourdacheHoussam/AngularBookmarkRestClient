@@ -7,11 +7,10 @@
  * # RestcontrollerCtrl
  * Controller of the angularBookmarkRestClientApp
  */
-angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl', ['$scope', 'RestFactory', function ($scope, RestFactory) {
+angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl', 
+    ['$scope', 'RestFactory', function ($scope, RestFactory) {
     
-    $scope.bookmarks;
-    $scope.favoriteBookmarks;
-    $scope.tags;
+    $scope.bookmarks;    
     $scope.status;
 
     //Call getBookmarks function
