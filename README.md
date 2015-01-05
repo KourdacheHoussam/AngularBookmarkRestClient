@@ -24,7 +24,7 @@
 
 
 ###### Après génération la structure de votre projet ressemblera à celle-ci:
-![alt text](app/images/project-structure.png)
+![alt text](app/images/project-structure.PNG)
 
 
 
