@@ -1,4 +1,4 @@
-#Angular JS Client:
+#Angular JS Rest Client:
 ###Consomation des web services Jersey REST avec Angular JS.
 
 
@@ -12,7 +12,7 @@
 
 > nous allons utiliser l'utile de scaffolding de [YEOMAN]. C'est un outil que vous pouvez installer 
 > en trois lignes de commande via votre console et ainsi générer toute la structure et les dépendances 
-> de votre projet Angular en une seule ligne de code. Il suffit de taper la ligne de commande suivante:
+> de votre projet Angular . Il suffit de taper la ligne de commande suivante au sein du répertoire de votre projet:
 
 ```sh
  $ mkdir mon-projet & cd mon-projet
@@ -23,8 +23,8 @@
 > page qui vous expliquera la démarche à suivre [YEOAMAN].
 
 
-
-
+###### Après génération la structure de votre projet ressemblera à celle-ci:
+![alt text](/app/images/project-structure.png "Project structure")
 
 
 
