@@ -82,6 +82,10 @@ $ yo angular:route routes
 
 
 
+### Création d'un composant Factory:
+> Les appels réseaux Http, on les effectuera au sein d'un composant factory.
+> Angular nous simplifie grandement les choses pour effectuer des requêtes http. Il suffit de déclarer le module $http et le passer
+en paramètre à la classe "app.factory()".
 
 
 
