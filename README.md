@@ -68,13 +68,16 @@ app.config(function ($routeProvider) {
 
 
 ```
-> Ce code déclare un module avec le mot clé "module" dont le nom "angularBookmarkRestClientApp". Puis il lui associe les modules(plugins) angular que vous aviez choisi lors de l'étape de génération. Par exemple: le module ngRoute est utilisé dans la partie configuration de l'app, de sorte à pouvoir utiliser le fournisseur $routeProvider.
+> Ce code déclare un module avec le mot clé "angular.module" dont le nom "angularBookmarkRestClientApp". Ainsi tout les composants que l'on créera comme par exemple les "factories", les "controllers", les "services" ...etc, seront associé à ce module "app". 
 
-> Par la suite, on associe à notre module "app" une configuration. Là il s'agit seulement de configurer les routes, que l'on aurait pu écrire dans un autre fichier, comme par exemple "routes.js" que l'on créera avec la commande suivante ;
+> Puis il lui associe les modules(plugins) angular que vous aviez choisi lors de l'étape de génération. Par exemple: le module ngRoute est utilisé dans la partie configuration de l'app, de sorte à pouvoir utiliser le fournisseur $routeProvider.
+
+> Par la suite, on associe à notre module "app" une configuration. Là il s'agit seulement de configurer les routes, que l'on aurait pu écrire dans un autre fichier, comme par exemple "routes.js" que l'on crée avec la commande suivante:
 
 ```sh
 $ yo angular:route routes
 ```
+> Par la suite, on rajoute les routes au fournisseur $routeProvider. Pour déclarer une route, on définit le contrôleur et la vue que l'on affichera. Par exemple: à l'url "rest/bookmarks/" on lui associe le contrôleur "BookmarkcontrollerCtrl" et la vue "bookmarks.html".
 
 
 
