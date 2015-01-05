@@ -29,6 +29,52 @@
 
 
 
+###Création de l'application Angular:
+> Par défaut un fichier app.js vous a été généré dans le dossier "/app.js".
+> Voici son contenu:
+
+```sh
+
+var app=angular.module('angularBookmarkRestClientApp', [
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch'
+  ]);
+
+app.config(function ($routeProvider) {
+    $routeProvider.when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })      
+      .when('/bookmarks', {
+        templateUrl:'views/bookmarks.html',
+        controller: 'BookmarksrestCtrl'
+      })
+      .when('/tags', {
+        templateUrl:'views/tags.html',
+        controller:'TagsrestcontrollerCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
+
+
+```
+> Ce code déclare un module avec le mot clé "module" dont le nom "angularBookmarkRestClientApp". Puis il lui associe les modules(plugins) angular que vous aviez choisi lors de l'étape de génération. Par exemple: le module ngRoute est utilisé dans la partie configuration de l'app, de sorte à pouvoir utiliser le fournisseur $routeProvider.
+
+> Par la suite, on associe à notre module "app" une configuration. Là il s'agit seulement de configurer les routes, que l'on aurait pu écrire dans un autre fichier, comme par exemple "routes.js" que l'on créera avec la commande suivante ;
+
+```sh
+$ yo angular:route routes
+```
 
 
 
