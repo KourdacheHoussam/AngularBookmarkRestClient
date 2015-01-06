@@ -107,11 +107,9 @@ en paramètre à la classe "app.factory()".
         dataFactory.getBookmarks=function(){
             return $http.get(url_base+url_all_bookmarks);
         };
-
         dataFactory.getBookmarkByID=function(id){
             return $http.get(url_base+url_bookmark_by_id+id);
         };
-
         /**
          * POST (INSERT) BOOOKMARKS  Methods
          * @returns {HttpPromise}
@@ -131,7 +129,6 @@ en paramètre à la classe "app.factory()".
                 data:data                
             });           
         };    
-
          /**
          * Get TAGS  Methods
          * @returns {HttpPromise}
@@ -140,7 +137,6 @@ en paramètre à la classe "app.factory()".
             console.log("I'am in the factory");
             return $http.get(url_base+url_all_tags);
         };
-
         /**
          * POST (INSERT) TAGS  Methods
          * @returns {HttpPromise}
@@ -172,11 +168,9 @@ en paramètre à la classe "app.factory()".
                     data:{tags:'tags'}
                 });         
         };
-
         return dataFactory;     //Return final dataFactory methods results
-  }]
-);
-
+      }]
+  );
 ```
 
 
