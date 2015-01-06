@@ -88,9 +88,7 @@ $ yo angular:route routes
 en paramètre à la classe "app.factory()".
 > Voici le contenu du fichier restfactory.js:
 ```sh
-
-angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', function ($http) {
-
+    angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', function ($http) {
         var url_base="http://localhost:9191/RestBookmarkManager/rest";
         var url_all_bookmarks="/bookmarks/getAll";
         var url_bookmark_by_id="/bookmarks/get/";
@@ -178,7 +176,10 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
         return dataFactory;     //Return final dataFactory methods results
   }]
 );
+
 ```
+
+
 
 
 
