@@ -9,7 +9,7 @@
  */
 angular.module('angularBookmarkRestClientApp').controller('TagsrestcontrollerCtrl', 
 		['$scope','RestFactory' ,function ($scope, RestFactory) {
-			
+
 	$scope.tags;
 
 	//call get all tags function
@@ -19,18 +19,23 @@ angular.module('angularBookmarkRestClientApp').controller('TagsrestcontrollerCtr
 		RestFactory.getTags()
 			.success(function (tags){
 				$scope.tags=tags;
-				}
-			)
+			})
 			.error(function	(error){
 				console.log("unable to load:(");
 			    $scope.status="Unable to load tags : Error : "+error;
-				}
-			)				
+			})				
 	};
 
 	// Function called from tags.html to insert new tag to DB
-	$scope.addNewTag=function(valTag){		
-		console.log("Val of tag :"+valTag.val);
+	$scope.addNewTag=function(valTag){
+		RestFactory.addNewTag(valTag.val)
+			.success(function (data, status, headers, config){
+				$scope.tag_inserted=data;
+				console.log("insert status :"+status);
+			})
+			.error(function(data, status, headers, config){
+				console.log("error insert status :"+status);
+			})
 	};
 
     $scope.awesomeThings = [
