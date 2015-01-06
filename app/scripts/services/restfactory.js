@@ -12,12 +12,12 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
         var url_base="http://localhost:9191/RestBookmarkManager/rest";
         var url_all_bookmarks="/bookmarks/getAll";
         var url_bookmark_by_id="/bookmarks/get/";
+        var url_add_bookmark="/bookmarks/add";
         var url_all_tags="/tags/getAll";
         var url_tag_by_id="/tags/get/";
         var url_add_tag="/tags/add";
         var url_delete_tag="/tags/delete/";
         var url_delete_all_tags="/tags/delete/all";
-        var url_all_favoriteBookmarks="";
         //Store data
         var dataFactory={};
         /**
@@ -36,9 +36,21 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
          * POST (INSERT) BOOOKMARKS  Methods
          * @returns {HttpPromise}
          */
-         dataFactory.addBookMark=function(){
-
-        };
+        dataFactory.addNewBookmark=function(name, type, description){  
+            var data={};         
+            return $http({
+                method:'POST',
+                headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+                url:url_base+url_add_bookmark+"?name="+name+"&type="+type+"&description="+description,
+                transformRequest: function(obj) {
+                    var str = [];
+                    for(var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));                    
+                    return str.join("&");
+                },
+                data:data                
+            });           
+        };    
 
          /**
          * Get TAGS  Methods
@@ -75,7 +87,7 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
         dataFactory.deleteAllTags=function(){
             return $http({
                     method:'DELETE',
-                    headers: {'Content-Type':'application/json; charset=UTF-8'},
+                    headers: {'Content-Type':'application/json'},
                     url:url_base+url_delete_all_tags ,
                     data:{tags:'tags'}
                 });         

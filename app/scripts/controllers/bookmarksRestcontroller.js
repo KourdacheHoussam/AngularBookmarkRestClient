@@ -40,7 +40,6 @@ angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl',
         if(this.idbookmark==""){
             return false;
         }
-
         RestFactory.getBookmarkByID(this.idbookmark).
             success(function(bookmark){
                 $scope.foundBookmark=bookmark;
@@ -48,6 +47,19 @@ angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl',
             .error(function(error){
                 $scope.status="Unable to load bookmarks : Error : "+error;
             })        
+    };
+
+
+    // Function called from tags.html to insert new tag to DB
+    $scope.addNewBookmark=function(Bookmark){
+        RestFactory.addNewBookmark(Bookmark.name, Bookmark.type, Bookmark.description)
+            .success(function (data, status, headers, config){
+                $scope.bookmark_inserted=data;
+                getBookmarks(); //refresh list of bookmarks
+            })
+            .error(function(data, status, headers, config){
+                console.log("error insert status :"+status);
+            })
     };
   }]
 );
