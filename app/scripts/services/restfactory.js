@@ -55,18 +55,12 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
          * @returns {HttpPromise}
          */
         dataFactory.addNewTag=function(tagVal){
-            var data={value:tagVal};
+            var Tag={id:0, tag_value:tagVal};
             return $http({
               method:'POST',
               url:url_base+url_add_tag,
-              transformRequest: function(obj) {
-                  var str = [];
-                  for(var p in obj)
-                  str.push( encodeURIComponent(obj[p]));
-                  return str.join("&");
-              },
               data:data,
-              headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+              headers: {'Content-Type': 'application/json'}
             });           
         };
 
