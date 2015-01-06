@@ -22,16 +22,22 @@
                     </tbody>
                 </table>
             </div>
-       </div>
-       <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
             <div class="well">
                  <h2>Add a Tag</h2>
                 <input type="text" ng-model="newTag.val" name="tag_value" size="30" placeholder="Enter Tag value" ng:required />
                 <button ng:click="addNewTag(newTag)">Add Tag</button>
             </div>
-            <p>Tag value: {{newTag.val}}</p>
-            <p>{{tag_inserted}}</p>
-       </div>
+            <p>Tag : {{newTag.val}}</p>   
+            <!-- DELETE ALL TAGS -->
+            <br/>
+            <button ng:click="deleteAllTags()">Delete All Tags</button>
+
+        </div>
+       
+
+
     </div>
 
 </div>

@@ -31,20 +31,22 @@ angular.module('angularBookmarkRestClientApp').controller('TagsrestcontrollerCtr
 		RestFactory.addNewTag(valTag.val)
 			.success(function (data, status, headers, config){
 				$scope.tag_inserted=data;
-				console.log("insert status :"+status);
+				getAllTags(); //refresh list of tags
 			})
 			.error(function(data, status, headers, config){
 				console.log("error insert status :"+status);
 			})
 	};
 
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-    $scope.model={
-    	id:"1",
-    	msg:"hello"
-    };
+	// Function called form tags.html to delete all tags stored in Server database
+	$scope.deleteAllTags=function(){
+		RestFactory.deleteAllTags()
+			.success(function(data,status, headers, config){
+				$scope.number_tags_deleted=data;
+				getAllTags(); //refresh list of tags
+			})
+			.error(function(data, status, headers, config){
+				console.log("Problem occured while deleting  tags stored in remote database");
+			})
+	};
 }]);

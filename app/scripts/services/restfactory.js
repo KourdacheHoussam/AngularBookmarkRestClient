@@ -14,9 +14,9 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
         var url_bookmark_by_id="/bookmarks/get/";
         var url_all_tags="/tags/getAll";
         var url_tag_by_id="/tags/get/";
-        var url_add_tag="/tags/add/";
+        var url_add_tag="/tags/add";
         var url_delete_tag="/tags/delete/";
-        var url_delete_all_tags="tags/delete/all";
+        var url_delete_all_tags="/tags/delete/all";
         var url_all_favoriteBookmarks="";
         //Store data
         var dataFactory={};
@@ -49,29 +49,38 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
             return $http.get(url_base+url_all_tags);
         };
 
-
         /**
          * POST (INSERT) TAGS  Methods
          * @returns {HttpPromise}
          */
         dataFactory.addNewTag=function(tagVal){
-            var Tag={id:0, tag_value:tagVal};
+            var data={tag_value:tagVal};
             return $http({
-              method:'POST',
-              url:url_base+url_add_tag,
-              data:data,
-              headers: {'Content-Type': 'application/json'}
+                method:'POST',
+                headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+                url:url_base+url_add_tag+"?tag_value="+tagVal,
+                transformRequest: function(obj) {
+                    var str = [];
+                    for(var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));                    
+                    return str.join("&");
+                },
+                data:data                
             });           
+        };    
+        /**
+        * Delete Tags Method
+        * @returns {HttPromise}
+        */
+        dataFactory.deleteAllTags=function(){
+            return $http({
+                    method:'DELETE',
+                    headers: {'Content-Type':'application/json; charset=UTF-8'},
+                    url:url_base+url_delete_all_tags ,
+                    data:{tags:'tags'}
+                });         
         };
 
-        dataFactory.getFavoriteBookmarks=function(){
-            return "";
-        };
-
-
-       
-
-        //Return final dataFactory methods results
-        return dataFactory;
+        return dataFactory;     //Return final dataFactory methods results
   }]
 );
