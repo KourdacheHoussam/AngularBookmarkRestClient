@@ -5,6 +5,7 @@
 > Dans cet exemple, un client léger est développé avec Angular JS afin de consommer les web services
 > déployés du côté serveur. Le lien vers le code déployant les web services:
 > [Spring & Jersey web services].
+> Effectuer les opérations CRUD : delete, Get, Post ...etc.
 > Nous allons utiliser le module $http d'angular pour effectuer les opérations get/post/delete de http.
   
 
@@ -235,15 +236,74 @@ angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl',
     };
 ```
 
+###Création de la vue: bookmarks.html
+> avec l'outil yeaoman, utiliser la commande suivante: yo angular:view bookmarks
+> nous générera un fichier html qui sera stocké dans le répertoire "/views".
+
+Voici son contenu:
+```sh
+<div class="row" > 
+        <div class="col-md-6">           
+            <div class="well">
+              <h2>List of bookmarks</h2>
+        <!-- Dispaly the content of $scope.bookmarks : list of bookmarks-->
+        <table id="example" class="table  table-bordered" cellspacing="0" width="40%">  
+            <thead style="color:white; background-color:#34495E;">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Edit</th>
+                </tr>        
+            </thead>
+            <tbody data-ng-repeat="bookmark in bookmarks">
+              <tr>
+                    <th  >{{bookmark.id}}</th>
+                    <th class="col-sm-6">{{bookmark.name}}</th>
+                    <th class="col-sm-6">{{bookmark.type}}</th>
+                    <th class="col-sm-1">{{bookmark.description}}</th>
+                    <th><button ng:click="bookmarks.$remove(bookmark)">Delete</button></th>
+                </tr>             
+            </tbody>
+        </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+           <div class="well">
+          <h2>Add BookMark</h2> 
+        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="40%"> 
+            <thead style="color:white; background-color:#34495E;">
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>    
+                    <th>Tags</th>       
+                </tr>        
+            </thead>
+            <tbody>
+              <tr>
+                    <th><input type="text" ng-model="Bookmark.name" name="id_name" size="10" placeholder="Enter name" ng:required /></th>
+                    <th><input type="text" ng-model="Bookmark.type" name="id_type" size="10" placeholder="Enter type" ng:required /></th>
+                    <th><input type="text" ng-model="Bookmark.description" name="id_desc" size="10" placeholder="Enter description" ng:required /></th>
+                  <th><input type="text" name="id_tags" size="10" placeholder="Enter Tags" ng:required /></th>
+                </tr>             
+            </tbody>   
+        </table>
+        <button ng:click="addNewBookmark(Bookmark)">Add a bookmark</button>
+        <br/><br>
+            <button ng:click="deleteAllBookmarks()">Delete all bookmarks</button>
+           </div>
+    </div>  
+</div>
+<hr>
+```
+
+###Remarques : 
+> Vous pouvez consulter le projet Spring/Jersey/JPA/DAO factory exposant les web services consommés via ce [lien].
 
 
-
-
-
-
-
-
-
+[lien]:https://github.com/KourdacheHoussam/RestBookmarkManager/tree/master/RestBookmarkManager
 [Spring & Jersey web services]:https://github.com/KourdacheHoussam/RestBookmarkManager/tree/master/RestBookmarkManager
 [PDF]:https://github.com/KourdacheHoussam/Angular/blob/master/CoursFiches/Cours%20introduction%20%C3%A0%20Angular%20JS.pdf
 [YEOAMAN]:http://yeoman.io/codelab/install-generators.html
