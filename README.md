@@ -6,7 +6,7 @@
 > déployés du côté serveur. Le lien vers le code déployant les web services:
 > [Spring & Jersey web services].
 > Nous allons utiliser le module $http d'angular pour effectuer les opérations get/post/delete de http.
-	
+  
 
 ### Générer la structure de votre projet web Angular JS: 
 
@@ -87,11 +87,10 @@ $ yo angular:route routes
 > Angular nous simplifie grandement les choses pour effectuer des requêtes http. Il suffit de déclarer le module $http et le passer
 en paramètre à la classe "app.factory()".
 > Voici le contenu du fichier restfactory.js:
+
 ```sh
-    angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', function ($http) {
-       
-       // Liste des url des web services exposés côté serveur.
-       
+angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', function ($http) {       
+       // Liste des url des web services exposés côté serveur.       
        var url_base="http://localhost:9191/RestBookmarkManager/rest";
         var url_all_bookmarks="/bookmarks/getAll";
         var url_bookmark_by_id="/bookmarks/get/";
@@ -182,9 +181,11 @@ en paramètre à la classe "app.factory()".
 ```
 
 ###Création du contrôleur bookmarkRestController.js:
-> Ce contrôleur jouera le rôle de récupérer les actions de l'utilisateur et d'appeler 
-> la bonne méthode de la "factory" (restFactory.js), pour déléguer la requête vers le bon web service.
-> Code source:
+
+  > Ce contrôleur jouera le rôle de récupérer les actions de l'utilisateur et d'appeler 
+  > la bonne méthode de la "factory" (restFactory.js), pour déléguer la requête vers le bon web service.
+  > Code source:
+
 ```sh
 angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl', 
       ['$scope', 'RestFactory', function ($scope, RestFactory) {    
