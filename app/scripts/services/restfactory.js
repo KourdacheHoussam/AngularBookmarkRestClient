@@ -13,6 +13,7 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
         var url_all_bookmarks="/bookmarks/getAll";
         var url_bookmark_by_id="/bookmarks/get/";
         var url_add_bookmark="/bookmarks/add";
+        var url_delete_all_bookmarks="/bookmarks/delete/all";
         var url_all_tags="/tags/getAll";
         var url_tag_by_id="/tags/get/";
         var url_add_tag="/tags/add";
@@ -52,6 +53,18 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
             });           
         };    
 
+           /**
+        * Delete Bookmarks Method
+        * @returns {HttPromise}
+        */
+        dataFactory.deleteAllBookmarks=function(){
+            return $http({
+                    method:'DELETE',
+                    headers: {'Content-Type':'application/json'},
+                    url:url_base+url_delete_all_bookmarks ,
+                    data:{tags:'tags'}
+                });         
+        };
          /**
          * Get TAGS  Methods
          * @returns {HttpPromise}

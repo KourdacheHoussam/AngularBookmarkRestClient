@@ -50,7 +50,7 @@ angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl',
     };
 
 
-    // Function called from tags.html to insert new tag to DB
+    // Function called from bookmarks.html to insert new tag to DB
     $scope.addNewBookmark=function(Bookmark){
         RestFactory.addNewBookmark(Bookmark.name, Bookmark.type, Bookmark.description)
             .success(function (data, status, headers, config){
@@ -59,6 +59,18 @@ angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl',
             })
             .error(function(data, status, headers, config){
                 console.log("error insert status :"+status);
+            })
+    };
+
+    //function call from bookmarks.html to delete all bookmarks
+    $scope.deleteAllBookmarks=function(){
+        RestFactory.deleteAllBookmarks()
+            .success(function (data, status, headers, config){
+                $scope.nb_bm_deleted=data;
+                getBookmarks();
+            })
+            .error(function(data, status, headers, config){
+                console.log("Arror deleting all bookmarks");
             })
     };
   }]
