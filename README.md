@@ -197,10 +197,9 @@ angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl',
     console.log("I'am in controller");
     //getBookmarks function
     function getBookmarks(){
-        /**
-        * Utiliser le composant RestFactory pour déléguer l'action de l'utilisateur 
-        * vers le bon web service.
-        */
+        
+        //Utiliser le composant RestFactory pour déléguer l'action de utilisateur 
+        //vers le bon web service.
         RestFactory.getBookmarks()
             .success(
                 function (bookmarks){
