@@ -303,6 +303,14 @@ Voici son contenu:
 > Vous pouvez consulter le projet Spring/Jersey/JPA/DAO factory exposant les web services consommés via ce [lien].
 
 
+### Quelques Captures d'écran:
+**Home**
+![altText](app/images/home.PNG "title") 
+**Onglet Bookmarks**
+![altText](app/images/bookmarks.PNG "title") 
+**Onglet Tags**
+![altText](app/images/tags.PNG "title") 
+
 [lien]:https://github.com/KourdacheHoussam/RestBookmarkManager/tree/master/RestBookmarkManager
 [Spring & Jersey web services]:https://github.com/KourdacheHoussam/RestBookmarkManager/tree/master/RestBookmarkManager
 [PDF]:https://github.com/KourdacheHoussam/Angular/blob/master/CoursFiches/Cours%20introduction%20%C3%A0%20Angular%20JS.pdf
