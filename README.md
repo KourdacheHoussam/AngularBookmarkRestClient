@@ -89,11 +89,9 @@ en paramètre à la classe "app.factory()".
 > Voici le contenu du fichier restfactory.js:
 ```sh
     angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', function ($http) {
-       /**
-       *
-       * Liste des url des web services exposés côté serveur.
-       *
-       */
+       
+       // Liste des url des web services exposés côté serveur.
+       
        var url_base="http://localhost:9191/RestBookmarkManager/rest";
         var url_all_bookmarks="/bookmarks/getAll";
         var url_bookmark_by_id="/bookmarks/get/";
@@ -121,11 +119,11 @@ en paramètre à la classe "app.factory()".
          */
         dataFactory.addNewBookmark=function(name, type, description){  
             var data={};
-            /**
-            * Effectuer la requete et renvoyer le résultat afin
-            * de pouvoir l'utiliser depuis le controler bookmarkRestController.js
-            * ci-dessous.
-            */         
+           
+            // Effectuer la requete et renvoyer le résultat afin
+            // de pouvoir l'utiliser depuis le controler bookmarkRestController.js
+            // ci-dessous.
+                     
             return $http({
                 method:'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
@@ -189,15 +187,13 @@ en paramètre à la classe "app.factory()".
 > Code source:
 ```sh
 angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl', 
-    ['$scope', 'RestFactory', function ($scope, RestFactory) {
-    
+      ['$scope', 'RestFactory', function ($scope, RestFactory) {    
     $scope.bookmarks;    
     //Call getBookmarks function
     getBookmarks();
     console.log("I'am in controller");
     //getBookmarks function
-    function getBookmarks(){
-        
+    function getBookmarks(){        
         //Utiliser le composant RestFactory pour déléguer l'action de utilisateur 
         //vers le bon web service.
         RestFactory.getBookmarks()
