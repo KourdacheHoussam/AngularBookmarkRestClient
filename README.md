@@ -69,7 +69,7 @@ app.config(function ($routeProvider) {
 
 
 ```
-> Ce code déclare un module avec le mot clé "angular.module" dont le nom "angularBookmarkRestClientApp". Ainsi tout les composants que l'on créera comme par exemple les "factories", les "controllers", les "services" ...etc, seront associé à ce module "app". 
+> Ce code déclare un module avec le mot clé "angular.module" dont le nom "angularBookmarkRestClientApp". Ainsi tout les composants que l'on créera comme par exemple les "factories", les "controllers", les "services" ...etc, seront associés à ce module "app". 
 
 > Puis il lui associe les modules(plugins) angular que vous aviez choisi lors de l'étape de génération. Par exemple: le module ngRoute est utilisé dans la partie configuration de l'app, de sorte à pouvoir utiliser le fournisseur $routeProvider.
 
@@ -183,7 +183,7 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
 
 ###Création du contrôleur bookmarkRestController.js:
 
-  > Ce contrôleur jouera le rôle de récupérer les actions de l'utilisateur et d'appeler 
+  > Ce contrôleur aura pour rôle la récupération des actions de l'utilisateur et d'appeler 
   > la bonne méthode de la "factory" (restFactory.js), pour déléguer la requête vers le bon web service.
   > Code source:
 
