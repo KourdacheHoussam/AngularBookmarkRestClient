@@ -89,7 +89,12 @@ en paramètre à la classe "app.factory()".
 > Voici le contenu du fichier restfactory.js:
 ```sh
     angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', function ($http) {
-        var url_base="http://localhost:9191/RestBookmarkManager/rest";
+       /**
+       *
+       * Liste des url des web services exposés côté serveur.
+       *
+       */
+       var url_base="http://localhost:9191/RestBookmarkManager/rest";
         var url_all_bookmarks="/bookmarks/getAll";
         var url_bookmark_by_id="/bookmarks/get/";
         var url_add_bookmark="/bookmarks/add";
@@ -115,7 +120,12 @@ en paramètre à la classe "app.factory()".
          * @returns {HttpPromise}
          */
         dataFactory.addNewBookmark=function(name, type, description){  
-            var data={};         
+            var data={};
+            /**
+            * Effectuer la requete et renvoyer le résultat afin
+            * de pouvoir l'utiliser depuis le controler bookmarkRestController.js
+            * ci-dessous.
+            */         
             return $http({
                 method:'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
@@ -172,6 +182,63 @@ en paramètre à la classe "app.factory()".
       }]
   );
 ```
+
+###Création du contrôleur bookmarkRestController.js:
+> Ce contrôleur jouera le rôle de récupérer les actions de l'utilisateur et d'appeler 
+> la bonne méthode de la "factory" (restFactory.js), pour déléguer la requête vers le bon web service.
+> Code source:
+```sh
+angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl', 
+    ['$scope', 'RestFactory', function ($scope, RestFactory) {
+    
+    $scope.bookmarks;    
+    //Call getBookmarks function
+    getBookmarks();
+    console.log("I'am in controller");
+    //getBookmarks function
+    function getBookmarks(){
+        /**
+        * Utiliser le composant RestFactory pour déléguer l'action de l'utilisateur 
+        * vers le bon web service.
+        */
+        RestFactory.getBookmarks()
+            .success(
+                function (bookmarks){
+                    $scope.bookmarks=bookmarks;
+                    console.log($scope.bookmarks);
+                }
+            )
+            .error(
+                function(error){
+                     console.log("unable to load:(");
+                    $scope.status="Unable to load bookmarks : Error : "+error;
+                }
+            )
+    };
+    // Function called from bookmarks.html to insert new tag to DB
+    $scope.addNewBookmark=function(Bookmark){
+        RestFactory.addNewBookmark(Bookmark.name, Bookmark.type, Bookmark.description)
+            .success(function (data, status, headers, config){
+                $scope.bookmark_inserted=data;
+                getBookmarks(); //refresh list of bookmarks
+            })
+            .error(function(data, status, headers, config){
+                console.log("error insert status :"+status);
+            })
+    };
+     //function call from bookmarks.html to delete all bookmarks
+    $scope.deleteAllBookmarks=function(){
+        RestFactory.deleteAllBookmarks()
+            .success(function (data, status, headers, config){
+                $scope.nb_bm_deleted=data;
+                getBookmarks();
+            })
+            .error(function(data, status, headers, config){
+                console.log("Arror deleting all bookmarks");
+            })
+    };
+```
+
 
 
 

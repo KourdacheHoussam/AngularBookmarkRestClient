@@ -60,9 +60,9 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
         dataFactory.deleteAllBookmarks=function(){
             return $http({
                     method:'DELETE',
-                    headers: {'Content-Type':'application/json'},
-                    url:url_base+url_delete_all_bookmarks ,
-                    data:{tags:'tags'}
+                    headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+                    url:url_base+url_delete_all_bookmarks,
+                    data:{data:"data"}
                 });         
         };
          /**
