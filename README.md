@@ -311,6 +311,9 @@ Voici son contenu:
 **Onglet Tags**
 ![altText](app/images/tags.PNG "title") 
 
+**POSTMAN : chrome plugin : Delete all tags**
+![altText](app/images/deleteall.PNG "title") 
+
 [lien]:https://github.com/KourdacheHoussam/RestBookmarkManager/tree/master/RestBookmarkManager
 [Spring & Jersey web services]:https://github.com/KourdacheHoussam/RestBookmarkManager/tree/master/RestBookmarkManager
 [PDF]:https://github.com/KourdacheHoussam/Angular/blob/master/CoursFiches/Cours%20introduction%20%C3%A0%20Angular%20JS.pdf
