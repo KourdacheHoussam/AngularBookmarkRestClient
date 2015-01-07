@@ -120,7 +120,7 @@ angular.module('angularBookmarkRestClientApp').factory('RestFactory', ['$http', 
             var data={};
            
             // Effectuer la requete et renvoyer le résultat afin
-            // de pouvoir l'utiliser depuis le controler bookmarkRestController.js
+            // de pouvoir utiliser depuis le controler bookmarkRestController.js
             // ci-dessous.
                      
             return $http({
@@ -195,7 +195,7 @@ angular.module('angularBookmarkRestClientApp').controller('BookmarksrestCtrl',
     console.log("I'am in controller");
     //getBookmarks function
     function getBookmarks(){        
-        //Utiliser le composant RestFactory pour déléguer l'action de utilisateur 
+        //Utiliser le composant RestFactory pour déléguer action de utilisateur 
         //vers le bon web service.
         RestFactory.getBookmarks()
             .success(
